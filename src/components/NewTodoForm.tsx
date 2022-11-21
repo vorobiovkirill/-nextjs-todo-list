@@ -8,7 +8,6 @@ interface NewTodoForm {
 }
 
 const NewTodoForm: React.FC<NewTodoForm> = ({ todo, order, handleChange }) => {
-    console.log('order', order)
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         const value = e.currentTarget[0].value;

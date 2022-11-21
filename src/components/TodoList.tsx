@@ -61,7 +61,7 @@ const TodoItem: React.FC<TodoItemProps>  = ({ id, index, todo, todos, moveTodo, 
         },
     })
 
-    const [{ isDragging }, drag] = useDrag({
+    const [_, drag] = useDrag({
         type: TodoTypes.TODO,
         item: () => {
             return { id, index }
@@ -77,9 +77,9 @@ const TodoItem: React.FC<TodoItemProps>  = ({ id, index, todo, todos, moveTodo, 
     }
 
     const handleToggleTodo = async (id: string) => {
-        const originalTasks = [...todos];
-        const todo = originalTasks.find((todo) => todo.id === id) || {};
-        await axios.put("/api/markTodo", { id, completed: !todo.completed })
+        const originalTodos = [...todos];
+        const todo = originalTodos.find((todo: Todo) => todo.id === id);
+        await axios.put("/api/markTodo", { id, completed: !todo?.completed })
         window.location.reload();
     }
 

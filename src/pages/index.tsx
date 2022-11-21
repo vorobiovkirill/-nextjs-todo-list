@@ -8,6 +8,7 @@ import TodoList from "../components/TodoList";
 import { prisma } from "../server/db/client";
 
 export type Todo = {
+  index: number
   id: string;
   description: string;
   completed?: boolean;
@@ -19,6 +20,7 @@ type HomeProps = {
 }
 
 const initialTodo = {
+  index: 0,
   id: '',
   description: '',
   completed: false,

@@ -1,10 +1,8 @@
-// import { useId } from 'react'
 import { prisma } from "../../server/db/client";
 import { type NextApiRequest, type NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const data = req.body;
-    console.log('data', data)
     try {
         // @ts-ignore
         const result = await prisma.todos.update({
