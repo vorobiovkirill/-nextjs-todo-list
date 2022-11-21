@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model todos {
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  description String?   @db.VarChar
+  id          String    @id(map: "TodoList_pkey") @default("1")
+  completed   Boolean?  @default(false)
+  order       Int?
+}
